@@ -15,5 +15,8 @@
     <Folder Include="Views\Shared\" />
     <Folder Include="Views\Home\" />
     <Folder Include="Controllers\" />
+    <Folder Include="Models\" />
+    <Folder Include="Data\" />
+    <Folder Include="Repos\" />
   </ItemGroup>
 </Project>
