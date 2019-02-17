@@ -23,7 +23,7 @@ namespace Blog.Repos
 
         }
 
-        public List<Post> GetAllPost(int id)
+        public List<Post> GetAllPost()
         {
             return _ctx.Posts.ToList();
         }

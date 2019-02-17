@@ -10,6 +10,7 @@ using Microsoft.Extensions.Configuration;
 using Blog.Data;
 using Microsoft.EntityFrameworkCore;
 using Blog.Repos;
+using Microsoft.AspNetCore.Identity;
 
 namespace Blog
 {
@@ -27,6 +28,20 @@ namespace Blog
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddDbContext<AppDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("Default")));
+            //Setup Authorization 
+            services.AddDefaultIdentity<IdentityUser>(options =>
+            {
+                options.Password.RequireDigit = false;
+                options.Password.RequireNonAlphanumeric = false;
+                options.Password.RequireUppercase = false;
+                //options.Password.RequireLowercase = false;
+                options.Password.RequiredLength = 6;
+
+            })
+                .AddRoles<IdentityRole>()
+                .AddEntityFrameworkStores<AppDbContext>();
+
+
             services.AddTransient<IRepository, Repository>();
 
             services.AddMvc();
@@ -39,6 +54,8 @@ namespace Blog
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseAuthentication();
 
             app.UseMvcWithDefaultRoute();
 

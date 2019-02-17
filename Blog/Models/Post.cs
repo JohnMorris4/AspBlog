@@ -9,7 +9,7 @@ namespace Blog.Models
 
         public DateTime CreatedAt { get; set; } = DateTime.Now;
 
-        public string Author { get; set; } = "JohnM";
+        public string Author { get; set; } = "John M";
 
 
     }
