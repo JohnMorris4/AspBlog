@@ -17,9 +17,16 @@
     <Folder Include="Controllers\" />
     <Folder Include="Models\" />
     <Folder Include="Data\" />
-    <Folder Include="Repos\" />
     <Folder Include="ViewModels\" />
     <Folder Include="Views\Auth\" />
     <Folder Include="Views\Panel\" />
+    <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\content\" />
+    <Folder Include="wwwroot\content\static\" />
+    <Folder Include="wwwroot\content\blog\" />
+    <Folder Include="Data\Repositories\" />
+    <Folder Include="Data\FileManager\" />
+    <Folder Include="wwwroot\css\" />
+    <Folder Include="wwwroot\lib\" />
   </ItemGroup>
 </Project>

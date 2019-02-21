@@ -4,15 +4,16 @@
 @{
 
 }
-
-<form asp-controller="Auth" asp-action="Login" method="post">
-    <div>
-        <label >User Name</label>
-        <input asp-for="UserName"/>
-    </div>
-    <div>
-        <label>Password</label>
-        <input asp-for="Password" type="password" />
-    </div>
-    <input type="submit" value="Sign In"/>
-</form>
+<div class="col-md-4 offset-md-4">
+    <form asp-controller="Auth" asp-action="Login" method="post">
+        <div class="form-group">
+            <label for="username">User Name</label>
+            <input class="form-control" id="username" asp-for="UserName" />
+        </div>
+        <div class="form-group">
+            <label for="password">Password</label>
+            <input class="form-control" id="password" asp-for="Password" />
+        </div>
+        <input class="btn btn-success" type="submit" value="Sign In" />
+    </form>
+</div>

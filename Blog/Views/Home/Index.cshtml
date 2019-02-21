@@ -2,30 +2,25 @@
 
 
 @{
-
+    ViewBag.Title = "Blog Home";
+    ViewBag.Description = "Blog Website has everything you need from the ground up";
+    ViewBag.Keywords = "Blog Programming Photography";
 }
-<h2>Home Page</h2>
 
+    <span class="title">
+    Amazing Blog Site
+    </span>
 <div>
-    <ul>
-        @foreach(var post in Model)
-        {
 
-        <li>
-            <a asp-controller="Home" asp-action="Post" asp-route-id="@post.Id">
-                @post.Title
-            </a>
-            -
-            <a asp-controller="Home" asp-action="Edit" asp-route-id="@post.Id">
-                Edit
-            </a>
-
-            -
-            <a asp-controller="Home" asp-action="Remove" asp-route-id="@post.Id">
-                Remove
-            </a>
-
-        </li>
-        }
-    </ul>
+    @foreach (var post in Model)
+    {
+        var image_path = $"/Image/{post.Image}";
+    <div class="col-md-8 offset-md-2 pb-2">
+        <a class="card" style="width: 50rem;" asp-controller="Home" asp-action="Post" asp-route-id="@post.Id">
+            <img src="@image_path" />
+            <span class="title">@post.Title</span>
+        </a>
+    </div>
+    }
 </div>
+

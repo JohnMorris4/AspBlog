@@ -1,1 +1,34 @@
-﻿<h1>Admin Panel</h1>
+﻿@model IEnumerable<Post>
+
+
+@{
+    ViewBag.Title = "Admin Panel";
+}
+<h2 class="admin-p">Admin Panel</h2>
+
+<div>
+    <h4><a class="btn btn-primary" asp-controller="Panel" asp-action="Edit">Create Post</a></h4>
+    <ul class="list-group">
+        @foreach (var post in Model)
+        {
+
+            <li class="list-group-item">
+
+                @post.Title
+
+                -
+                <a class="btn btn-success" asp-controller="Panel" asp-action="Edit" asp-route-id="@post.Id">
+                    Edit
+                </a>
+
+
+
+                -
+                <a class="btn btn-danger" asp-controller="Panel" asp-action="Remove" asp-route-id="@post.Id">
+                    Remove
+                </a>
+
+            </li>
+        }
+    </ul>
+</div>

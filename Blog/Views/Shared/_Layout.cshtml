@@ -4,29 +4,56 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width" initial-scale="1.0"/>
+        <link href="~/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="~/css/style.css" rel="stylesheet" />
         <title>@ViewBag.Title</title>
+        <meta name="description" content="@ViewBag.Description" />
+        <meta name="keywords" content="@ViewBag.Keywords" />
     </head>
     <body>
-        <div>
-            <a asp-controller="Home" asp-action="Index">Home</a>
-            @*<a asp-controller="Home" asp-action="Post">Post</a>*@
-            <a asp-controller="Home" asp-action="Edit">Create Post</a>
+        
+            <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+                <a class="navbar-brand" href="#">ASP.NET Blog</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarColor02">
+                <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                <a class="nav-link" asp-controller="Home" asp-action="Index">Home</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" asp-controller="Panel" asp-action="Index">Admin Panel</a>
+                </li>
+                <li class="nav-item">
+                @if (User.Identity.IsAuthenticated)
+                {
+                   <a class="nav-link" asp-controller="Auth" asp-action="Logout">Logout</a>
+                }
+                else
+                {
+                   <a class="nav-link" asp-controller="Auth" asp-action="Login">Sign In</a>
+                }
+            </li>
+                </ul>
+            </nav>
+            <div class="container-fluid">
+                <div class="jumbotron jumbotron-fluid">
+                    <div>
+                        <img class="bg" src="~/content/static/computer1.jpeg"/>
+                    </div>
+                </div>
 
-            <a asp-controller="Panel" asp-action="Index">Admin Panel</a>
-
-            @if (User.Identity.IsAuthenticated)
-            {
-                <a asp-controller="Auth" asp-action="Logout">Logout</a>
-            }
-            else
-            {
-                <a asp-controller="Auth" asp-action="Login">Sign In</a>
-            }
 
 
-        </div>
-        <div>
-            @RenderBody()
-        </div>
-    </body>
+
+                @RenderBody()
+            </div>
+            <footer class="footer navbar-dark mt-5 py-3">
+                <div class="container">
+                    <span>&copy; Morris Web Developement - 2019</span>
+                </div>
+            </footer>
+            @RenderSection("scripts", false)
+</body>
 </html>
